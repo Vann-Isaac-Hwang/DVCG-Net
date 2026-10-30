@@ -283,7 +283,7 @@ def preprocess_ptbxl(
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Robust PTB-XL preprocessing for DualFreqDGNN-ST")
+    parser = argparse.ArgumentParser(description="Robust PTB-XL preprocessing for DVCG-Net")
 
     parser.add_argument(
         "--raw_dir",

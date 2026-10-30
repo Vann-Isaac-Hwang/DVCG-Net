@@ -1,6 +1,6 @@
-# DualFreqDGNN ECG
+# DVCG-Net
 
-Research code for dual-frequency ECG classification and baseline evaluation.
+Research code for DVCG-Net, a dual-view contrastive graph network for ECG classification, and its baseline evaluation.
 The repository contains code only; ECG datasets, processed tensors, trained
 weights, logs, plots, and third-party baseline source repositories are excluded.
 

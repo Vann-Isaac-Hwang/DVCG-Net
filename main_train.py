@@ -47,7 +47,7 @@ def str2bool(value):
     raise argparse.ArgumentTypeError(f"Expected true/false, got: {value}")
 
 def get_args():
-    parser = argparse.ArgumentParser(description="DualFreqDGNN 统一训练框架")
+    parser = argparse.ArgumentParser(description="DVCG-Net 统一训练框架")
     parser.add_argument('--dataset', type=str, required=True, choices=['CPSC', 'PTBXL', 'CHAPMAN', 'PTB'], help='目标数据集')
     parser.add_argument('--loss', type=str, required=True, choices=['BCE', 'MLFL', 'CE'], help='使用的分类损失函数；single_label 推荐 CE')
     parser.add_argument('--k_folds', type=int, default=5, help='交叉验证的折数')

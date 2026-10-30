@@ -26,7 +26,7 @@ PTBXL_CLASS_TO_IDX = {c: i for i, c in enumerate(PTBXL_CLASSES)}
 PTBXL_PRIORITY = ['MI', 'STTC', 'CD', 'HYP', 'NORM']
 
 def get_args():
-    parser = argparse.ArgumentParser(description="DualFreqDGNN 统一评估框架")
+    parser = argparse.ArgumentParser(description="DVCG-Net 统一评估框架")
     parser.add_argument('--dataset', type=str, required=True, choices=['CPSC', 'PTBXL', 'CHAPMAN', 'PTB'])
     parser.add_argument('--loss', type=str, required=True, choices=['BCE', 'MLFL', 'CE'])
     parser.add_argument('--k_folds', type=int, default=5, help='评估的总 fold 数')
