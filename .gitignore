@@ -1,0 +1,50 @@
+# Local configuration and data
+config.yaml
+data/
+*_Data/
+*.mat
+*.hea
+*.dat
+*.atr
+*.wfdb
+*.csv
+*.tsv
+*.zip
+*.tar
+*.tar.gz
+
+# Downloaded third-party baseline repositories
+external_baselines/
+
+# Training artifacts and generated outputs
+checkpoints/
+logs/
+logs_*/
+results/
+wandb/
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.onnx
+
+# Python and editor artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.idea/
+.vscode/
+
+# Local experiment notes and machine-specific command history
+EXPERIMENT_LOG.md
+official_baseline_commands.md
+run_all_baselines_train_eval.ps1
+run_ours_train_eval.ps1
+run_tgllnet_train_eval.ps1
+run_cpsc2018_all_baselines_5fold.ps1
+run_cpsc2018_baselines_train_eval_safe.ps1
+run_cpsc2018_resume_after_medgnn_fail.ps1
+run_cpsc2018_resume_from_patchtst.ps1
+collect_baseline_results.ps1
