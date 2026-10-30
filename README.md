@@ -11,7 +11,7 @@ then install the remaining dependencies:
 
 ```bash
 python -m pip install -r requirements.txt
-cp config.example.yaml config.yaml
+cp configs/config.example.yaml configs/config.yaml
 ```
 
 Put datasets under `data/`, or set `DUAL_ECG_DATA_ROOT` to a data directory.
@@ -34,9 +34,9 @@ The official baseline adapters load source repositories at runtime. Download
 those sources separately into the ignored `external_baselines/` directory:
 
 ```bash
-bash scripts/clone_official_baselines.sh
-python check_official_baseline_sources.py
-python smoke_test_models.py --models official_patchtst --device cpu --batch_size 2 --seq_len 1000
+bash scripts/baselines/clone_official_baselines.sh
+python -m scripts.diagnostics.check_official_baseline_sources
+python -m scripts.diagnostics.smoke_test_models --models official_patchtst --device cpu --batch_size 2 --seq_len 1000
 ```
 
 The clone script retrieves upstream repositories and does not bundle or modify
@@ -49,11 +49,30 @@ Python dependencies.
 Check the CPSC runner's Python environment and dataset path first:
 
 ```bash
-./run_cpsc2018_5fold.sh --check-env
+./scripts/runners/linux/run_cpsc2018_5fold.sh --check-env
 MODELS=official_patchtst START_FOLD=0 END_FOLD=5 EPOCHS=50 PATIENCE=10 \
-  ./run_cpsc2018_5fold.sh
+  ./scripts/runners/linux/run_cpsc2018_5fold.sh
 ```
 
 Set `DUAL_ECG_DATA_ROOT`, `CPSC_DATA_DIR`, or `CHAPMAN_DATA_DIR` to override
 the default data locations. Training outputs are written under ignored local
 `checkpoints/`, `logs_*`, and `results/` directories.
+
+## Project Layout
+
+```text
+configs/                 Shared configuration template and local config
+data_process/            Dataset loading and dataset-specific preprocessing
+models/                  DVCG-Net and baseline model implementations
+utils/                   Configuration, splits, losses, and registries
+experiments/              Analysis, ablation, baseline, evaluation, few-shot
+scripts/                  Diagnostics, runners, preprocessing, maintenance
+docs/                     Local experiment records and working notes
+```
+
+Run experiment modules from the repository root, for example:
+
+```bash
+python -m experiments.analysis.diagnose_itransformer --help
+python -m experiments.baselines.eval_all_ptbxl_checkpoints --help
+```

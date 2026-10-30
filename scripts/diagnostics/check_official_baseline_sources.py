@@ -13,7 +13,7 @@ def main():
     for row in describe_available_sources():
         print(f"{row['name']:24s} {row['paper_name']:18s} {row['status']:8s} {row['details']}")
     print("-" * 120)
-    print("If a source is missing, run scripts/clone_official_baselines.sh or set the corresponding ECG_BASELINE_*_ROOT variable.")
+    print("If a source is missing, run scripts/baselines/clone_official_baselines.sh or set the corresponding ECG_BASELINE_*_ROOT variable.")
 
 
 if __name__ == "__main__":

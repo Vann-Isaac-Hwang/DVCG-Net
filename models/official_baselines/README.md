@@ -8,8 +8,8 @@ project-local `xxx-style` fallback models.
 Clone public repositories into `external_baselines/`:
 
 ```bash
-bash scripts/clone_official_baselines.sh
-python check_official_baseline_sources.py
+bash scripts/baselines/clone_official_baselines.sh
+python -m scripts.diagnostics.check_official_baseline_sources
 ```
 
 Alternatively set environment variables:

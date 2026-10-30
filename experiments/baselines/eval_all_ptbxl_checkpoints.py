@@ -5,7 +5,7 @@ Batch evaluator for PTB-XL BCE checkpoints produced by this project.
 
 Usage example, run from the project root:
 
-python eval_all_ptbxl_checkpoints.py \
+python -m experiments.baselines.eval_all_ptbxl_checkpoints \
   --weights_dir /path/to/PTBXL_BCE_Weights \
   --data_dir /path/to/PTBXL_Data/processed_sr100_freq10 \
   --threshold_mode val_calibrated \
@@ -461,7 +461,7 @@ def main() -> None:
     parser.add_argument("--fixed_threshold", type=float, default=0.5)
     parser.add_argument("--kind", default="best", help="best, last, final_candidate, comma-separated, or all")
     parser.add_argument("--include_incomplete", action="store_true", help="Also evaluate groups with fewer than 5 folds.")
-    parser.add_argument("--batch_size", type=int, default=None, help="Override config.yaml train.batch_size for eval.")
+    parser.add_argument("--batch_size", type=int, default=None, help="Override configs/config.yaml train.batch_size for eval.")
     parser.add_argument("--num_workers", type=int, default=0)
     parser.add_argument("--device", default=None, help="Override device, e.g. cuda:0 or cpu.")
     parser.add_argument("--out_dir", default="./results/eval_all", help="Where to save summary CSV files.")

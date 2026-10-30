@@ -123,8 +123,14 @@ def main():
         print(entry)
         return
 
-    log_path = Path(__file__).resolve().parents[1] / "EXPERIMENT_LOG.md"
-    existing = log_path.read_text(encoding="utf-8")
+    project_root = Path(__file__).resolve().parents[3]
+    log_path = project_root / "docs" / "EXPERIMENT_LOG.md"
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    existing = (
+        log_path.read_text(encoding="utf-8")
+        if log_path.exists()
+        else "# CPSC2018 Experiment Log\n"
+    )
     if eval_ref in existing:
         print(f"Already recorded: {eval_ref}")
         return

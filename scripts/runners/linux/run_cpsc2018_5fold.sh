@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Linux 5-fold CPSC2018 train/eval runner using the paper protocol.
-PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 cd "$PROJECT_DIR"
 
 if [[ -z "${PYTHON_BIN:-}" ]]; then
@@ -32,13 +32,13 @@ GRAD_CLIP="${GRAD_CLIP:-0}"
 LIVE_PROGRESS="${LIVE_PROGRESS:-1}"
 
 # Override with a space-separated list, for example:
-# MODELS="resnet1d no_freq_split_aff" ./run_cpsc2018_5fold.sh
+# MODELS="resnet1d no_freq_split_aff" ./scripts/runners/linux/run_cpsc2018_5fold.sh
 MODELS="${MODELS:-resnet1d transformer1d official_patchtst official_itransformer official_fedformer official_medformer official_medgnn official_fouriergnn tgllnet no_freq_split_aff}"
 
 if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
     cat <<'EOF'
 Usage:
-  ./run_cpsc2018_5fold.sh
+  ./scripts/runners/linux/run_cpsc2018_5fold.sh
 
 Environment overrides:
   MODELS="resnet1d no_freq_split_aff"
@@ -48,7 +48,7 @@ Environment overrides:
   RESUME_CHECKPOINT="/path/to/last_checkpoint.pth"
   CPSC_DATA_DIR="/path/to/processed_sr100_freq10"
   LIVE_PROGRESS=0  # disable live terminal progress; keep file logging only
-  ./run_cpsc2018_5fold.sh --check-env
+  ./scripts/runners/linux/run_cpsc2018_5fold.sh --check-env
 EOF
     exit 0
 fi
@@ -199,7 +199,7 @@ for model in $MODELS; do
     if [[ -n "$BATCH_SIZE" ]]; then
         record_args+=(--batch-size "$BATCH_SIZE")
     fi
-    "$PYTHON_BIN" -X utf8 scripts/record_cpsc_run.py "${record_args[@]}"
+    "$PYTHON_BIN" -X utf8 scripts/runners/linux/record_cpsc_run.py "${record_args[@]}"
 
     echo "Finished $model"
     echo "  train log: $train_log"

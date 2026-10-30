@@ -96,7 +96,7 @@ def _build_baseline(ablation: str, num_classes: int):
         return TGLLNetForECG(num_classes=num_classes)
 
     raise ValueError(
-        f"Unknown baseline '{ablation}'. Use smoke_test_models.py --list_models "
+        f"Unknown baseline '{ablation}'. Use python -m scripts.diagnostics.smoke_test_models --list_models "
         "to view registered baselines."
     )
 

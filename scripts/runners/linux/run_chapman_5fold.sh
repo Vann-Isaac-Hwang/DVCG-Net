@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 cd "$PROJECT_DIR"
 
 PYTHON_BIN="${PYTHON_BIN:-python}"
@@ -18,7 +18,7 @@ MODEL="${MODEL:-full}"
 if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
     cat <<'EOF'
 Usage:
-  ./run_chapman_5fold.sh
+  ./scripts/runners/linux/run_chapman_5fold.sh
 
 Environment overrides:
   MODEL=full START_FOLD=0 END_FOLD=1 EPOCHS=2 PATIENCE=1

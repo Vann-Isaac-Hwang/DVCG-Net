@@ -1,5 +1,5 @@
 # Local configuration and data
-config.yaml
+configs/config.yaml
 data/
 *_Data/
 *.mat
@@ -38,13 +38,7 @@ __pycache__/
 .vscode/
 
 # Local experiment notes and machine-specific command history
-EXPERIMENT_LOG.md
-official_baseline_commands.md
-run_all_baselines_train_eval.ps1
-run_ours_train_eval.ps1
-run_tgllnet_train_eval.ps1
-run_cpsc2018_all_baselines_5fold.ps1
-run_cpsc2018_baselines_train_eval_safe.ps1
-run_cpsc2018_resume_after_medgnn_fail.ps1
-run_cpsc2018_resume_from_patchtst.ps1
-collect_baseline_results.ps1
+docs/EXPERIMENT_LOG.md
+docs/official_baseline_commands.md
+scripts/runners/windows/*.ps1
+!scripts/runners/windows/run_cpsc2018_preprocess.ps1

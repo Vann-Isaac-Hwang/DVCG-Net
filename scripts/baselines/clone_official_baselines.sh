@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="${OFFICIAL_BASELINES_ROOT:-external_baselines}"
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+ROOT="${OFFICIAL_BASELINES_ROOT:-$PROJECT_DIR/external_baselines}"
 mkdir -p "$ROOT"
 cd "$ROOT"
 
@@ -27,5 +28,6 @@ clone_or_update https://github.com/aikunyi/MedGNN MedGNN
 
 echo
 echo "Done. Now run:"
-echo "  python check_official_baseline_sources.py"
-echo "  python smoke_test_models.py --models official_fouriergnn --device cuda --batch_size 2 --seq_len 1000"
+echo "  cd \"$PROJECT_DIR\""
+echo "  python -m scripts.diagnostics.check_official_baseline_sources"
+echo "  python -m scripts.diagnostics.smoke_test_models --models official_fouriergnn --device cuda --batch_size 2 --seq_len 1000"

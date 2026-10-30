@@ -59,7 +59,7 @@ def main():
     cfg = load_config()
     print("🚀 启动数据预处理 (读取配置文件路径)...")
     
-    # 直接从 config.yaml 读取路径
+    # 直接从 configs/config.yaml 读取路径
     data_dir = cfg.env.raw_data_dir  # 原始 .mat 文件夹路径
     csv_path = cfg.env.csv_path      # 原始 REFERENCE.csv 路径
     save_dir = cfg.env.data_dir      # 处理后张量的保存路径

@@ -49,7 +49,7 @@ def main():
     
     # ⚠️ 【防泄露警告】
     # 下方使用的是随机划分，仅为了消融实验能快速跑通对比。
-    # 真实跨域或严谨 5-Fold 请务必使用 fix_ptb_leakage.py 中的患者级划分逻辑。
+    # 真实跨域或严谨 5-Fold 请务必使用 scripts/maintenance/fix_ptb_leakage.py 中的患者级划分逻辑。
     from sklearn.model_selection import KFold
     kf = KFold(n_splits=5, shuffle=True, random_state=cfg.env.seed)
     train_idx, val_idx = next(kf.split(range(len(dataset)))) 
